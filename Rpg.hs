@@ -3,7 +3,7 @@ import qualified Data.Text.IO as Text
 import BinaryTree (history, buildTree)
 import System.Process
 
-clear = system "cls"
+clear = system "clear"
 
 play = do
 	clear

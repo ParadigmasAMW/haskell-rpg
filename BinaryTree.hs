@@ -6,7 +6,7 @@ data ArvBin elemento = Nulo
 	|Node elemento (ArvBin elemento)(ArvBin elemento)
 	deriving (Show, Eq)
 
-clear = system "cls"	
+clear = system "clear"
 
 history :: (Eq elemento, Show elemento) => BinaryTree.ArvBin elemento -> IO()
 history (Node elemento Nulo Nulo) = do
@@ -18,15 +18,17 @@ history (Node elemento esq dir) = do
 	print elemento
 	putStrLn "Faca sua escolha: "
 	path <- readLn
-	if ((path == 1) && (esq /= Nulo)) then 
-			(history (esq)) 
-		else (if ((path == 2) && (dir /= Nulo)) then 
+	if ((path == 1) && (esq /= Nulo)) then
+			(history (esq))
+		else (if ((path == 2) && (dir /= Nulo)) then
 			(history (dir))
 		else history(Node elemento esq dir))
 
 buildTree :: [elemento] -> BinaryTree.ArvBin elemento
 buildTree [] = Nulo
-buildTree list = (Node (list !! half)(buildTree $ take half list) (buildTree $ drop (half+1) list))
+buildTree list = (Node (list !! half)
+					   (buildTree $ take half list)
+					   (buildTree $ drop (half+1) list))
     where half = length list `quot` 2
 
 preOrder :: (Ord elemento) => BinaryTree.ArvBin elemento -> [elemento]
