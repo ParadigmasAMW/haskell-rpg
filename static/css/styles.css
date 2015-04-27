@@ -49,4 +49,8 @@ h2 {
   padding-bottom: 0em;
   margin-bottom:0;
 }
-.view-source { float: right }
+
+.history {
+  text-align: justify;
+  color: white;
+}
