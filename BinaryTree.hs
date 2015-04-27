@@ -30,7 +30,7 @@ buildTree list = (Node (list !! half)(buildTree $ take half list) (buildTree $ d
     where half = length list `quot` 2
 
 printTree :: Show elemento => BinaryTree.ArvBin elemento -> [Char]
-printTree (Nulo) = "Empty root."
+printTree (Nulo) = "Raiz Vazia."
 printTree (Node elemento esq dir) = unlines (printTreeHelper (Node elemento esq dir))
 
 preOrder :: (Ord elemento) => BinaryTree.ArvBin elemento -> [elemento]
