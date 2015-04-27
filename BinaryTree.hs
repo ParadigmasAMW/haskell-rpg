@@ -1,4 +1,4 @@
-module BinaryTree (history, buildTree, printTree, preOrder) where
+module BinaryTree (history, buildTree, preOrder) where
 
 import System.Process
 
@@ -28,10 +28,6 @@ buildTree :: [elemento] -> BinaryTree.ArvBin elemento
 buildTree [] = Nulo
 buildTree list = (Node (list !! half)(buildTree $ take half list) (buildTree $ drop (half+1) list))
     where half = length list `quot` 2
-
-printTree :: Show elemento => BinaryTree.ArvBin elemento -> [Char]
-printTree (Nulo) = "Raiz Vazia."
-printTree (Node elemento esq dir) = unlines (printTreeHelper (Node elemento esq dir))
 
 preOrder :: (Ord elemento) => BinaryTree.ArvBin elemento -> [elemento]
 preOrder Nulo = []
